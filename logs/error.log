@@ -1,0 +1,1 @@
+[Thu Dec 05 12:21:46.434448 2019] [php7:warn] [pid 18781] [client 222.252.30.25:14244] PHP Warning:  POST Content-Length of 14130177 bytes exceeds the limit of 8388608 bytes in Unknown on line 0, referer: http://barcodelive.org/barcode/edit/1233

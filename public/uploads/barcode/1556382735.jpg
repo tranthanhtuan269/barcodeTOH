@@ -1,0 +1,121 @@
+
+
+
+
+<!DOCTYPE html><html><head><title>EAN, UPC, ISBN, GTIN data, barcodes, lookups</title><meta name="robots" content="index, follow"><meta http-equiv="content-language" content="EN-US"><meta name="keywords" content="UPC, EAN, GTIN, ISBN, search, lookup, product, database, download, API, upc search, upc database, "><meta name="msapplication-config" content="none"><!-- desc --><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+
+<link rel="stylesheet" href="/style/jqm/grayscale.min.css"  media="screen"><link rel="stylesheet" href="/style/jqm/jquery.mobile.icons.min.css"  media="screen"><link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" media="screen"><link rel="stylesheet" type="text/css" href="/style/screen.css?v=20181024"><link rel="stylesheet" type="text/css" href="/style/print.css?v=2" media="print"><link rel="stylesheet" href="/style/jqm/grayscale.override.css"  media="screen"><script src="//code.jquery.com/jquery-1.11.1.min.js"></script><!-- jquery-plugins --><script src="/js/jquery/jquery-mobile-autocomplete.js"></script><!-- end-plugins --><script src="/js/main.js?v=20181024"></script><script src="/js/upc.js?v=20181001"></script><script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script><noscript><style>body { background:black; color:white; }</style></noscript></head><body><div data-role="page" id="page-main" data-overlay-theme="a"><div id="head" data-id="head" data-role="header" data-position="fixed"  data-tap-toggle="false" data-theme=""><div class="ui-grid-a"><div class="ui-block-a"><a href='/'><span class='wide-screen' style='white-space:nowrap'><img src='/image/title.png' border='0' alt='EAN, UPC, ISBN, GTIN data, barcodes, lookups'><img src='/image/barcode-icon.png' border='0' alt='barcode'></span><span class='narrow-screen noprint'><img src='/image/title-narrow.png' border='0' alt='EAN, UPC, ISBN, GTIN data, barcodes, lookups'></span></a></div><div class="ui-block-b noprint" style="text-align:right">&nbsp; <a href="/search-form.php" onclick="return(showPopup('search-form'));"><img src="/icon/48_boxed_search.png" title="Search" alt="Search" border="0"></a> <a href="/share.php" onclick="return(showPopup('share'));"><img src="/icon/48_boxed_share.png" title="Share" alt="Share" border="0"></a> <a href="/menu-panel.php" onclick="$('#menu-panel').popup('open'); return(false);"><img src="/icon/48_boxed_menu.png" title="Menu" alt="Menu" border="0"></a></div></div></div><div data-role="content" id="main-content-section" style="overflow:auto" data-theme="">
+<!-- adsense code blocked -->
+	<center>
+		<a class='home-info-box' href='/download/' data-role='none'>
+			<img src='/icon/120_download.png'>
+			<p>
+			Download a copy of our data. Either a full
+			download or a partial download. Images can
+			also be downloaded.
+			</p>
+		</a>
+		<a class='home-info-box' href='/feed/' data-role='none'>
+			<img src='/icon/120_api.png'>
+			<p>
+			Access our data using the API data feed.
+			You can lookup product information one at a
+			time through your own application.
+			</p>
+		</a>
+		<a class='home-info-box' href='/blog/' data-role='none'>
+			<img src='/icon/120_blog.png'>
+			<p>
+			Read through our BLOG entries to learn how
+			to make use of our data and the general workings
+			of barcodes of various types.
+			</p>
+		</a>
+		<a class='home-info-box' href='/faq/' data-role='none'>
+			<img src='/icon/120_faq.png'>
+			<p>
+			The answers to many of the frequently asked questions
+			can be found here in our FAQ.
+			</p>
+		</a>
+		<a class='home-info-box' href='/search-form.php' onclick='return(showPopup("search-form"));' data-role='none'>
+			<img src='/icon/120_search.png'>
+			<p>
+			Search by UPC, EAN, ISBN or ASIN codes as well
+			as by text from the product name or description.
+			</p>
+		</a>
+		<a class='home-info-box' href='/barcode.php' data-role='none'>
+			<img src='/icon/120_barcode.png'>
+			<p>
+			Create your own standard barcodes using our online
+			tools. Save the images for future
+			use absolutly free.
+			</p>
+		</a>
+		<a class='home-info-box' href='/qrcode.php' data-role='none'>
+			<img src='/icon/120_qr.png'>
+			<p>
+			Create your own 2D QR Code barcodes using our online
+			tools. Save the images for future use absolutly free.
+			</p>
+		</a>
+		<a class='home-info-box' href='/chat/' data-role='none'>
+			<img src='/icon/120_chat.png'>
+			<p>
+			Online live chatting with other users of this site.
+			Perhaps you can get some help with your project.
+			</p>
+		</a>
+	</center>
+	<div>
+		<p>
+			Our goal is to connect you to as much product information as we possibly can
+			using the barcode data found on packages. This data comes in the form of
+			EAN-13, UPC-A, UPC-E and ISBN-10 codes which are used by manufacturers to
+			uniquely identify their products.
+		</p>
+		<p>
+			We attempt to locate additional	data about each product such as the descriptions,
+			categories, company contact information and some images.
+		</p>
+		<p>
+			In addition to information about the products, we also try to provide
+			some basic information about how these codes are created and
+			how they can be used. You can hand key or scan barcode data into the search
+			box to get started.
+		</p>
+	</div>
+
+	<h3><a href="/index2.php">Learn More...</a></h3>
+
+<div data-role="popup" id="menu-panel" data-close-btn="right" data-position-to="window" data-transition="slideup" data-theme="b" data-overlay-theme="b"><div data-role="header"><a  data-rel="back" data-role="button" href="#" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><h1>Navigation</h1></div><a  data-mini="true" data-role="button" data-icon="gear" href="/login.php" data-iconpos="right"onclick="$('#menu-panel').popup('close'); show_ajax_dialog('Log In',this.href); return(false);">Log In</a> <a  data-mini="true" data-role="button" data-icon="gear" href="/login.php?mode=register" data-iconpos="right">Register</a> <br> <div class='ui-grid-a main-menu'><div class='ui-block-a'><a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/faq/">F.A.Q.</a> <a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/forum/">Forum</a> <a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/blog/">Our Blog</a> <a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/find.php">Prices &amp; Pictures</a> <a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/overview.php">Overview</a> <a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/barcode.php">Barcodes</a> <a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/help.php">UPC Help</a> <a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/qrcode.php">QR Codes</a> <a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/mobile_apps.php">Mobile Apps</a> <a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/linux/">Linux</a> <br> </div><div class='ui-block-b'><a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/download/">Download</a> <a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/feed/">Data&nbsp;Feed&nbsp;API</a> <a  data-mini="true" data-role="button" data-iconpos="right" data-icon="arrow-r" href="/data-test/">Data&nbsp;Test</a> </div></div></div>
+			<div data-role="popup" id="search-form" data-overlay-theme="a" data-close-btn="right" data-position-to="window" style="max-width:600px">
+				<div data-role="header" data-theme="c">
+					<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+					<h1>Search</h1>
+				</div>
+				<div id="search-form-content" data-role="content" data-theme="c">
+				</div>
+			</div>
+			
+
+			<div data-role="popup" id="share" data-overlay-theme="a" data-close-btn="right" data-position-to="window">
+				<div data-role="header" data-theme="c">
+					<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+					<h1>Share</h1>
+				</div>
+				<div id="share-content" data-role="content" data-theme="c">
+				</div>
+			</div>
+			
+		<div data-role="popup" id="dialog-popup" data-close-btn="right" data-position-to="window" data-overlay-theme='a' data-theme="b">
+			<div id="dialog-head" data-role="header" data-theme="b">
+				<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+				<h1 id="dialog-title">Dialog</h1>
+			</div>
+			<div id="dialog-content" data-role="content" data-theme="b" style="padding-left:.5em; padding-right:3em; padding-top:.5em; padding-bottom:.5em;"></div>
+		</div>
+		
+<!-- adsense code blocked -->
+</div><div id="foot" data-id="foot" data-role="footer" data-theme=""><div style='font-size:smaller; text-align:center'>All content on this site is copyright &copy;2004-2019 and is not to be reproduced without prior permission.</div><div style='text-align:center; margin-top:10px;' class='noprint'><a href='/fair-use.php'>Terms of Use</a> | <a href='/disclaimer.php'>Data Accuracy and Limits</a> | <a href='/contact.php'>Contact Us</a></div></div></div></body></html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Authorization</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="robots" content="noindex, nofollow" />
+		<meta name="apple-itunes-app" content="app-id=561683423">
+	<link rel="apple-touch-icon-precomposed" href="/images/iphone/57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/iphone/72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/iphone/114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/iphone/144x144.png" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="/bitrix/js/main/core/css/core.min.css?14290239272854" type="text/css" rel="stylesheet" />
+<link href="/bitrix/js/main/core/css/core_popup.min.css?150876739513169" type="text/css" rel="stylesheet" />
+<link href="/bitrix/js/socialservices/css/ss.min.css?14478421834566" type="text/css" rel="stylesheet" />
+<link href="/bitrix/js/intranet/intranet-common.min.css?150850189661344" type="text/css" data-template-style="true" rel="stylesheet" />
+<link href="/bitrix/templates/login/template_styles.min.css?149743457021744" type="text/css" data-template-style="true" rel="stylesheet" />
+<script type="text/javascript">if(!window.BX)window.BX={};if(!window.BX.message)window.BX.message=function(mess){if(typeof mess=='object') for(var i in mess) BX.message[i]=mess[i]; return true;};</script>
+<script type="text/javascript">(window.BX||top.BX).message({'JS_CORE_LOADING':'Loading...','JS_CORE_WINDOW_CLOSE':'Close','JS_CORE_WINDOW_EXPAND':'Expand','JS_CORE_WINDOW_NARROW':'Restore','JS_CORE_WINDOW_SAVE':'Save','JS_CORE_WINDOW_CANCEL':'Cancel','JS_CORE_H':'h','JS_CORE_M':'m','JS_CORE_S':'s','JS_CORE_NO_DATA':'- No data -','JSADM_AI_HIDE_EXTRA':'Hide extra items','JSADM_AI_ALL_NOTIF':'All notifications','JSADM_AUTH_REQ':'Authentication is required!','JS_CORE_WINDOW_AUTH':'Log In','JS_CORE_IMAGE_FULL':'Full size','JS_CORE_WINDOW_CONTINUE':'Continue'});</script>
+<script type="text/javascript">(window.BX||top.BX).message({'LANGUAGE_ID':'en','FORMAT_DATE':'MM/DD/YYYY','FORMAT_DATETIME':'MM/DD/YYYY H:MI:SS T','COOKIE_PREFIX':'BITRIX_SM','SERVER_TZ_OFFSET':'10800','SITE_ID':'s1','SITE_DIR':'/','USER_ID':'','SERVER_TIME':'1522049913','USER_TZ_OFFSET':'0','USER_TZ_AUTO':'Y','bitrix_sessid':'cf6c833598cd6df485af9d9f38f046ad'});</script>
+
+
+<script type="text/javascript"  src="/bitrix/js/main/core/core.min.js?151801858576838"></script>
+<script type="text/javascript"  src="/bitrix/js/main/core/core_popup.min.js?151056902340695"></script>
+<script type="text/javascript"  src="/bitrix/js/main/core/core_fx.min.js?14909536449768"></script>
+<script type="text/javascript"  src="/bitrix/js/socialservices/ss.js?14161451311030"></script>
+<script type="text/javascript">var bxDate = new Date(); document.cookie="BITRIX_SM_TIME_ZONE="+bxDate.getTimezoneOffset()+"; path=/; expires=Fri, 01-Jan-2038 00:00:00 GMT"</script>
+
+
+
+<script type="text/javascript"  src="/bitrix/templates/login/components/bitrix/socserv.auth.form/.default/script.js?1416145157287"></script>
+
+</head>
+<body>
+
+<table class="log-main-table">
+	<tr>
+		<td class="log-top-cell">
+			<a class="main-logo main-logo-en" href="/" title="Bitrix24"></a>
+		</td>
+	</tr>
+	<tr>
+		<td class="log-main-cell">
+			<div class="log-popup-wrap " id="login-popup-wrap">
+				<div class="log-popup" id="login-popup">
+<div class="log-popup-header">Authorization</div>
+<hr class="b_line_gray">
+
+<div style="margin:30px 0 30px 83px;">
+	
+		
+					<div class="bx-auth-serv-icons" style="display:inline-block">
+				<a title="Google" href="javascript:void(0)" onclick="BX.util.popup('https://accounts.google.com/o/oauth2/auth?client_id=798910771106.apps.googleusercontent.com&amp;redirect_uri=https%3A%2F%2Fwww.bitrix24.com%2Fcontroller%2Fredirect.php&amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly+email+https%3A%2F%2Fmail.google.com%2F+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&amp;response_type=code&amp;access_type=offline&amp;state=https%3A%2F%2Ftohsoft.bitrix24.com%2Fbitrix%2Ftools%2Foauth%2Fgoogle.php%3Fcheck_key%3D58b6e5db3cbb1d2fcd56fda936351587%26state%3Dprovider%253DGoogleOAuth%2526state%253Dbackurl%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile%252526mode%25253Dopener%252526redirect_url%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile', 580, 400)" id="bx_auth_href_GoogleOAuth"><span class="bx-auth-serv-icon google"></span></a><a title="Facebook" href="javascript:void(0)" onclick="BX.util.popup('https://www.facebook.com/dialog/oauth?client_id=176383269175092&amp;redirect_uri=https%3A%2F%2Fwww.bitrix24.ru%2Fcontroller%2Fredirect.php&amp;scope=email,publish_actions,user_friends&amp;display=popup&amp;state=https%3A%2F%2Ftohsoft.bitrix24.com%2Fbitrix%2Ftools%2Foauth%2Ffacebook.php%3Fcheck_key%3D58b6e5db3cbb1d2fcd56fda936351587%26state%3Dstate%253Dbackurl%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile%252526redirect_url%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile', 580, 400)" id="bx_auth_href_Facebook"><span class="bx-auth-serv-icon facebook"></span></a><a title="Twitter" href="javascript:void(0)" onclick="BX.util.popup('/bitrix/components/bitrix/im.messenger/show.file.php?ncc=1&amp;auth_service_id=Twitter&amp;check_key=58b6e5db3cbb1d2fcd56fda936351587&amp;backurl=%2Fbitrix%2Fcomponents%2Fbitrix%2Fim.messenger%2Fshow.file.php%3FfileId%3D58992%26fileName%3Dicon.jpg%26action%3DshowFile&amp;fileId=58992&amp;fileName=icon.jpg&amp;action=showFile', 800, 450)" id="bx_auth_href_Twitter"><span class="bx-auth-serv-icon twitter"></span></a><a title="LiveID" href="javascript:void(0)" onclick="BX.util.popup('https://login.live.com/oauth20_authorize.srf?client_id=0000000040103B3B&amp;redirect_uri=https%3A%2F%2Fwww.bitrix24.ru%2Fcontroller%2Fredirect.php&amp;scope=wl.signin+wl.basic+wl.offline_access+wl.emails&amp;response_type=code&amp;state=https%3A%2F%2Ftohsoft.bitrix24.com%2Fbitrix%2Ftools%2Foauth%2Fliveid.php%3Fstate%3Dbackurl%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253Fcheck_key%2525253D58b6e5db3cbb1d2fcd56fda936351587%25252526fileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile%252526redirect_url%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile%252526mode%25253Dopener', 580, 400)" id="bx_auth_href_LiveIDOAuth"><span class="bx-auth-serv-icon liveid"></span></a><a title="Bitrix24" href="javascript:void(0)" onclick="BX.util.popup('https://www.bitrix24.net/oauth/authorize/?user_lang=en&amp;client_id=b24.56444d7dee9923.29548203&amp;redirect_uri=https%3A%2F%2Ftohsoft.bitrix24.com%2Fbitrix%2Fcomponents%2Fbitrix%2Fim.messenger%2Fshow.file.php%3Fauth_service_id%3DBitrix24Net%26fileId%3D58992%26fileName%3Dicon.jpg%26action%3DshowFile&amp;scope=auth,profile&amp;response_type=code&amp;mode=popup&amp;state=site_id%3Ds1%26backurl%3D%252Fbitrix%252Fcomponents%252Fbitrix%252Fim.messenger%252Fshow.file.php%253Fcheck_key%253D58b6e5db3cbb1d2fcd56fda936351587%2526fileId%253D58992%2526fileName%253Dicon.jpg%2526action%253DshowFile%26mode%3Dpopup', 800, 600)" id="bx_auth_href_Bitrix24Net"><span class="bx-auth-serv-icon bitrix24"></span></a>							<span class="login-social-networks-link-more" id="socservMoreButton">More</span>
+
+							<div id="moreSocServPopup" style="display: none; width:40px" class="bx-auth-serv-icons" onclick="BX.PopupWindowManager.getCurrentPopup().close();">
+												<a title="Dropbox" href="javascript:void(0)" onclick="BX.util.popup('https://www.dropbox.com/oauth2/authorize?client_id=gedn92yckyom208&amp;redirect_uri=https%3A%2F%2Fwww.bitrix24.ru%2Fcontroller%2Fredirect.php&amp;response_type=code&amp;state=https%3A%2F%2Ftohsoft.bitrix24.com%2Fbitrix%2Ftools%2Foauth%2Fdropbox.php%3Fcheck_key%3D58b6e5db3cbb1d2fcd56fda936351587%26state%3Dstate%253Dbackurl%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile%252526mode%25253Dopener%252526redirect_url%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile', 680, 600)" id="bx_auth_href_Dropbox">
+							<span class="bx-auth-serv-icon dropbox"></span>
+						</a>
+						<br/>
+											<a title="Yandex" href="javascript:void(0)" onclick="BX.util.popup('https://oauth.yandex.ru/authorize?response_type=code&amp;client_id=f4f27ebfd0e04666b6c74477eeade385&amp;display=popup&amp;state=https%3A%2F%2Ftohsoft.bitrix24.com%2Fbitrix%2Ftools%2Foauth%2Fyandex.php%3Fcheck_key%3D58b6e5db3cbb1d2fcd56fda936351587%26state%3Dstate%253Dbackurl%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile%252526mode%25253Dopener%252526redirect_url%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile', 680, 600)" id="bx_auth_href_YandexOAuth">
+							<span class="bx-auth-serv-icon yandex"></span>
+						</a>
+						<br/>
+											<a title="Box.com" href="javascript:void(0)" onclick="BX.util.popup('https://app.box.com/api/oauth2/authorize?client_id=uinpfo2iwsag0aj4dsaji1l3n3a2eb1w&amp;redirect_uri=https%3A%2F%2Fwww.bitrix24.ru%2Fcontroller%2Fredirect.php&amp;response_type=code&amp;state=https%3A%2F%2Ftohsoft.bitrix24.com%2Fbitrix%2Ftools%2Foauth%2Fbox.php%3Fcheck_key%3D58b6e5db3cbb1d2fcd56fda936351587%26state%3Dstate%253Dbackurl%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile%252526mode%25253Dopener%252526redirect_url%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile', 680, 600)" id="bx_auth_href_Box">
+							<span class="bx-auth-serv-icon box"></span>
+						</a>
+						<br/>
+											<a title="Office365" href="javascript:void(0)" onclick="BX.util.popup('https://login.microsoftonline.com/common/oauth2/authorize?client_id=786d7aab-1054-4475-8ec7-d050ffe38ec6&amp;redirect_uri=https%3A%2F%2Fwww.bitrix24.ru%2Fcontroller%2Fredirect.php&amp;response_type=code&amp;resource=https%3A%2F%2Fgraph.microsoft.com&amp;state=https%3A%2F%2Ftohsoft.bitrix24.com%2Fbitrix%2Ftools%2Foauth%2Foffice365.php%3Fstate%3Dbackurl%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253Fcheck_key%2525253D58b6e5db3cbb1d2fcd56fda936351587%25252526fileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile%252526redirect_url%25253D%2525252Fbitrix%2525252Fcomponents%2525252Fbitrix%2525252Fim.messenger%2525252Fshow.file.php%2525253FfileId%2525253D58992%25252526fileName%2525253Dicon.jpg%25252526action%2525253DshowFile%252526mode%25253Dopener', 580, 400)" id="bx_auth_href_Office365">
+							<span class="bx-auth-serv-icon office365"></span>
+						</a>
+						<br/>
+												</div>
+							</div>
+				<div class="bx-auth" style="margin-bottom:0; margin-top:0">
+			<form method="post" name="bx_auth_services" target="_top" action="/bitrix/components/bitrix/im.messenger/show.file.php?login=yes&amp;amp;fileId=58992&amp;amp;fileName=icon.jpg&amp;amp;action=showFile">
+												<div class="bx-auth-service-form" id="bx_auth_serv" style="display:none; margin-top: 12px;margin-left: 20px;">
+																																																																																																												</div>
+
+								<input type="hidden" name="auth_service_id" value="" />
+			</form>
+		</div>
+
+		
+</div>
+
+<form name="form_auth" method="post" target="_top" action="/bitrix/components/bitrix/im.messenger/show.file.php?login=yes&amp;fileId=58992&amp;fileName=icon.jpg&amp;action=showFile">
+	<input type="hidden" name="AUTH_FORM" value="Y" />
+	<input type="hidden" name="TYPE" value="AUTH" />
+		<input type="hidden" name="backurl" value="/bitrix/components/bitrix/im.messenger/show.file.php?fileId=58992&amp;fileName=icon.jpg&amp;action=showFile" />
+		
+	<div class="">
+		<div class="login-item">
+			<!--[if IE]><span class="login-label">Login:</span><![endif]-->
+			<input class="login-inp" type="text" name="USER_LOGIN" placeholder="Login:" value="" maxlength="255"/>
+		</div>
+		<div class="login-item">
+			<!--[if IE]><span class="login-label">Password:</span><![endif]-->
+			<input class="login-inp" type="password" name="USER_PASSWORD" placeholder="Password:" maxlength="255"/>
+		</div>
+		
+		<div class="login-text login-item">
+						<input type="checkbox" id="USER_REMEMBER" name="USER_REMEMBER" value="Y" /><label class="login-item-checkbox-label" for="USER_REMEMBER">Remember me on this computer</label>
+								</div>
+	</div>
+	<div class="log-popup-footer">
+		<input type="submit" value="Log In" class="login-btn" onclick="BX.addClass(this, 'wait');"/>
+		<a class="login-link-forgot-pass" href="/bitrix/components/bitrix/im.messenger/show.file.php?forgot_password=yes&amp;fileId=58992&amp;fileName=icon.jpg&amp;action=showFile">Forgot your password?</a>
+	</div>
+</form>
+
+<script type="text/javascript">
+	function fireEnterKey(event)
+	{
+		event = event || window.event;
+		if (event.keyCode != 13)
+			return true;
+
+		var src = event.srcElement || event.target;
+		if (!src || (src.tagName.toLowerCase() != "textarea"))
+		{
+			var form = document.forms["form_auth"];
+			if (form)
+			{
+				var password = form.elements["USER_PASSWORD"];
+				if (!password || BX.type.isNotEmptyString(password.value))
+					form.submit();
+			}
+
+			BX.PreventDefault(event);
+		}
+
+		return true;
+	}
+
+	BX.ready(function() {
+		BX.focus(document.forms["form_auth"]["USER_LOGIN"]);
+		//BX.bind(BX("submit-button"), "click", function(event) {document.forms["form_auth"].submit(); });
+		BX.bind(document.forms["form_auth"], "keypress", fireEnterKey);
+	});
+</script>
+					<div class="log-popup-caption-wrap">
+						<div class="log-popup-caption">
+															<div id="language-box" class="language-box en">
+									<span id="language-arrow" class="language-flag"><span class="arrow"></span></span>
+								</div>
+														&copy; 2001-2018 Bitrix, Inc.						</div>
+					</div>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="log-bottom-cell"><span class="log-bottom-cap"></span></td>
+	</tr>
+</table>
+<script type="text/javascript">
+	BX.ready(function(){
+		var lang_toggle = BX('language-box');
+		BX.bind(lang_toggle, 'click', function(){
+			BX.PopupMenu.show('feed-filter-popup', lang_toggle, [
+				{text : "Russian", className : "language-box-item ru", onclick : function() { reloadPage("ru"); }},
+				{text : "English", className : "language-box-item en", onclick : function() { reloadPage("en"); }},
+				{text : "Deutsch", className : "language-box-item de", onclick : function() { reloadPage("de"); }},
+				{text : "Ukrainian", className : "language-box-item ua", onclick : function() { reloadPage("ua"); }},
+				{text : "Spanish", className : "language-box-item la", onclick : function() { reloadPage("la"); }}
+			],
+					{   offsetTop:10,
+						offsetLeft:0,
+						angle:{offset: 33}
+					}
+			);
+		})
+	});
+	function reloadPage(lang)
+	{
+		var url = window.location.href;
+		url = url.replace(/(\?|\&)user_lang=[A-Za-z]{2}/, "");
+		url += (url.indexOf("?") == -1 ? "?" : "&") + "user_lang=" + lang;
+		window.location.href = url;
+	}
+</script>
+
+</body>
+</html>
