@@ -12,13 +12,6 @@
     Dropzone.autoDiscover = false;
     var uploadedDocumentMap = {}
     check_action_droponejs = false;
-
-    var src = $(this).attr('src');
-    var txt_base64 = 'data:image/';
-    if(src.indexOf(txt_base64) === -1){
-        window.open('{{ url("uploads/barcode") }}' + '/' + $(this).attr('alt'), '_blank');
-    }
-    
 </script>
 <div class="special"></div>
 <div class="container">
@@ -199,8 +192,8 @@
 <script type="text/javascript">
 
     var inputEl = document.getElementById('barcodetxt');
-       var goodKey = '0123456789';
-    
+    var goodKey = '0123456789';
+
     var crop_max_width = 400;
     var crop_max_height = 400;
     var jcrop_api;
@@ -209,11 +202,11 @@
     var image;
 
     var prefsize;
+    var arr_str_image  = [];
 
     CKEDITOR.replace('description_field');
     CKEDITOR.replace('feature');
     CKEDITOR.replace('spec');
-    
 
     CKEDITOR.instances['spec'].on('contentDom', function() {
         this.document.on('click', function(event){
@@ -307,90 +300,6 @@
             $('#file').click();
            });
     
-           function loadImage(input) {
-             if (input.files && input.files[0]) {
-               var reader = new FileReader();
-               canvas = null;
-               reader.onload = function(e) {
-                 image = new Image();
-                 image.onload = validateImage;
-                 image.src = e.target.result;
-               }
-               reader.readAsDataURL(input.files[0]);
-               $('#submit-btn').removeClass('hide');
-             }
-           }
-    
-           function validateImage() {
-              $('.progress').addClass('hide');
-              if (canvas != null) {
-                image = new Image();
-                image.onload = restartJcrop;
-                image.src = canvas.toDataURL('image/png');
-    
-                $("#form").submit();
-              } else restartJcropOpen();
-           }
-
-            function restartJcropOpen() {
-                if(image.width < 160 || image.height < 160 || image.width > 3000 || image.height > 3000){
-                    $("#views").empty();
-                    swal({
-                        html: '<div class="alert-danger">Image must be between 160 x 160 — 3,000 x 3,000 pixels. Please select a different image.</div>',
-                    });
-                  }else{
-                    $('#change-image').modal('show');
-                    restartJcrop();
-                  }
-            }
-    
-           function restartJcrop() {
-             if (jcrop_api != null) {
-               jcrop_api.destroy();
-             }
-             $("#views").empty();
-             $("#views").append("<canvas id=\"canvas\">");
-             canvas = $("#canvas")[0];
-             context = canvas.getContext("2d");
-             canvas.width = image.width;
-             canvas.height = image.height;
-             var imageSize = (image.width > image.height)? image.height : image.width;
-             imageSize = (imageSize > 800)? 800: imageSize;
-             context.drawImage(image, 0, 0);
-             $("#canvas").Jcrop({
-               onSelect: selectcanvas,
-               onRelease: clearcanvas,
-               boxWidth: crop_max_width,
-               boxHeight: crop_max_height,
-               setSelect: [0,0,(imageSize*4/3),imageSize],
-               aspectRatio: 4/3,
-               bgOpacity:   .4,
-               bgColor:     'black'
-             }, function() {
-               jcrop_api = this;
-             });
-             clearcanvas();
-             selectcanvas({x:0,y:0,w:(imageSize*4/3),h:imageSize});
-           }
-    
-           function clearcanvas() {
-             prefsize = {
-               x: 0,
-               y: 0,
-               w: canvas.width,
-               h: canvas.height,
-             };
-           }
-    
-           function selectcanvas(coords) {
-             prefsize = {
-               x: Math.round(coords.x),
-               y: Math.round(coords.y),
-               w: Math.round(coords.w),
-               h: Math.round(coords.h)
-             };
-           }
-    
            $('#submit-btn').click(function(){
                canvas.width = prefsize.w;
                canvas.height = prefsize.h;
@@ -403,8 +312,6 @@
              $('#change-image').modal('hide');
              $('#product-image').removeClass('hide');
              formData = new FormData($(this)[0]);
-             //---Add file blob to the form data
-             formData.append("base64", canvas.toDataURL('image/png'));
     
              $.ajaxSetup(
              {
@@ -420,9 +327,6 @@
                contentType: false,
                processData: false,
                beforeSend: function() {
-                    $('#product-image').css('width', '165px');
-                    $('#product-image').css('height', '125px');
-                    $('#product-image').show();
                     $("#image-loading").show();
                 },
                success: function(data) {
@@ -453,16 +357,17 @@
 </script>
 <script type="text/javascript">
     file_old_deleted = [];
+    file_old_list = [];
 
     $(document).ready(function(){
         myDropzone = new Dropzone("div#myDrop", 
         { 
+            maxFiles: 10,
             paramName: "files", // The name that will be used to transfer the file
             addRemoveLinks: true,
             uploadMultiple: true,
             autoProcessQueue: true,
             parallelUploads: 50,
-            maxFiles: 10,
             maxFilesize: 2, // MB
             thumbnailWidth: null,
             thumbnailHeight: null,
@@ -476,16 +381,35 @@
             },
 
             success: function(file, response){
+
                 $(".ajax_waiting").removeClass("loading");
-                var arr_str_image  = [];
 
                 $.each( response.data, function(index, item){
-                    // if(jQuery.inArray(file.name, arr_str_image) === -1) {
-                        arr_str_image.push(file.name)
-                        $('#str_image').append('<div data-title="'+ file.name +'">'+ item +'</div>')
+                    console.log(file.name);
+                    console.log(slug(file.name));
+                    var flag = false;
+                    // if(jQuery.inArray(item, arr_str_image) === -1) {
+                    $.each(file_old_list, function(key,value){
+                      if(value.indexOf(slug(file.name)) != -1){
+                        swal({
+                            type: 'warning',
+                            html: 'File already exists!',
+                        })   
+                        file.previewElement.remove();
+                        flag = true;
+                        return false;
+                      }
+                    });
+
+                    if(!flag){
+                      if(item.indexOf(slug(file.name)) != -1){
+                          arr_str_image.push(item)
+                          $('#str_image').append('<div data-title="'+ slug(file.name) +'">'+ item +'</div>')
+                      }
+                    }
                     // }
                 });
-      
+                
 
             },
             accept: function(file, done) {
@@ -493,8 +417,7 @@
                 done();
             },
             error: function(file, message, xhr){
-                file.previewElement.remove()
-                
+                file.previewElement.remove()  
                 swal({
                     type: 'warning',
                     html: message,
@@ -521,13 +444,12 @@
                 if (str != '') {
                     data = str.split(",");
                 }
-
-                
-
+             
                 $.each(data, function(key,value){
                     if (value) {
                         var mockFile = { name: value };
                         thisDropzone.options.addedfile.call(thisDropzone, mockFile);
+                        file_old_list.push(value);
                         var image_path = "{{ url('/uploads/barcode/') }}" + "/" +value;
                         thisDropzone.options.thumbnail.call(thisDropzone, mockFile, image_path);
                     }
@@ -535,6 +457,14 @@
 
                 this.on('addedfile', function(file) {
                     var max_file = $('#myDrop .dz-image').length;
+                    console.log(slug(file.name))
+
+                    $.each(file_old_list, function(key,value){
+                      if(value.indexOf(slug(file.name)) != -1){
+                        file.previewElement.remove();
+                        return false;
+                      }
+                    });
 
                     if (max_file > 10) {
                         this.removeFile(file);
@@ -556,6 +486,11 @@
                         return;
                     }
 
+                    if (file.size > 2000000) {
+                        this.removeFile(file);
+                        return;
+                    }
+
                     // var ext = file.name.split('.').pop();
 
                     // if (ext != "png" && ext != "jpeg" && ext != "jpg" && ext != "gif" && ext != "webp") {
@@ -566,13 +501,17 @@
                         var _i, _len;
                         for (_i = 0, _len = this.files.length; _i < _len - 1; _i++) // -1 to exclude current file
                         {
+                          console.log(slug(file.name))
+                          console.log(this.files[_i].name)
                             if(this.files[_i].name === file.name && this.files[_i].size === file.size && this.files[_i].lastModifiedDate.toString() === file.lastModifiedDate.toString())
                             {
                                 swal({
                                     type: 'warning',
                                     html: 'File already exists!',
                                 })   
-                                this.removeFile(file);
+                                // this.removeFile(file);
+                                this.files.pop();
+                                file.previewElement.remove()
                             }
                         }
                     }
@@ -581,12 +520,33 @@
 
                 this.on('removedfile', function(file) {
                     file.previewElement.remove()
-                    $('#str_image div[data-title="'+ file.name +'"]').remove()
-                    file_old_deleted.push(file.name);
+                    // thisDropzone.removeFile(file);
+                    arr_str_image.splice($.inArray(slug(file.name), arr_str_image),1);
+                    file_old_list.splice($.inArray(slug(file.name), file_old_list),1);
+                    $('#str_image div[data-title="'+ slug(file.name) +'"]').remove()
+                    file_old_deleted.push(slug(file.name));
                 });
 
             },
         });
+
+        var slug = function(str) {
+          str = str.replace(/^\s+|\s+$/g, ''); // trim
+          str = str.toLowerCase();
+
+          // remove accents, swap ñ for n, etc
+          var from = "ãàáảạăẵắằẳặâẫầấẩậäẽèéëẻẹêễềếểệĩìíïîịõòóöọỏôốộỗồổợỡớờỡởũùúủụưứừữựửüûñç_";
+          var to   = "aaaaaaaaaaaaaaaaaaeeeeeeeeeeeeiiiiiioooooooooooooooooouuuuuuuuuuuuunc-";
+          for (var i=0, l=from.length ; i<l ; i++) {
+            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+          }
+
+          str = str.replace(/[^a-z0-9. -]/g, '') // remove invalid chars
+            .replace(/\s+/g, '-') // collapse whitespace and replace by -
+            .replace(/-+/g, '-'); // collapse dashes
+
+          return str;
+        };
 
         $("body").on("click", "#add-edit-barcode", function (e) {
             var str_image = '';
