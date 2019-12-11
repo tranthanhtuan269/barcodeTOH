@@ -1,4 +1,5 @@
 <?php
+
 Route::get('/clear-cache', function () {
 	Artisan::call('cache:clear');
 	Artisan::call('config:cache');
@@ -20,8 +21,6 @@ Route::get('settingPackageBarCodeAjax',['as' => 'settingPackageBarCodeAjax', 'us
 Route::group(['middleware' => 'auth'], function () {
 	Route::group(['prefix'=>'admin'],function(){
 		Route::get('/home','HomeController@getIndex');
-
-
 
 		Route::group(['prefix' => 'roles'],function () {
 			Route::get('list',['as' => 'getRoleList', 'uses' => 'RoleController@getRoleList']);

@@ -66,11 +66,11 @@ class BarCodeController extends Controller
                 $user_id = Auth::user()->id;
                 if( $request->file_excel ){
                     $rules = array(
-                        'file_excel' => 'required|mimes:xlsx,xls,csv',
+                        'file_excel' => 'required',
                     );
                     $messages = [
                         'file_excel.required'=> isset($this->messages['barcode.file_excel.required']) ? $this->messages['barcode.file_excel.required'] : 'The file field is required.',
-                        'file_excel.mimes'=> isset($this->messages['barcode.file_excel.mimes']) ? $this->messages['barcode.file_excel.mimes'] : 'The File is not formatted correctly.',
+                        // 'file_excel.mimes'=> isset($this->messages['barcode.file_excel.mimes']) ? $this->messages['barcode.file_excel.mimes'] : 'The File is not formatted correctly.',
                     ];
 
                     $validator = Validator::make($request->all(), $rules);
@@ -109,7 +109,7 @@ class BarCodeController extends Controller
                                         unset($validator);  
                                         $barcode = trim($row['barcode']);
                                         $rules = [
-                                            'barcode' =>'required|numeric|digits_between:12,13|unique:barcode,barcode|check_barcode:'.$barcode,
+                                            'barcode' =>'required|numeric|digits_between:12,13|check_barcode:'.$barcode,
                                             'name' =>'required|max:200',
                                             'model' =>'required|max:50',
                                             'manufacturer' => 'required|max:200',
@@ -147,6 +147,7 @@ class BarCodeController extends Controller
 
                                             $str_image = '';
                                             $arr_file = explode(',', $row['image']);
+                                            $arr_file = array_unique($arr_file);
 
                                             foreach ($arr_file as $file) {
                                                 $link_img = trim($file);
@@ -268,8 +269,9 @@ class BarCodeController extends Controller
                     $ext  = \File::extension($file_name);
                     $ext  = strtolower($ext);
                     $file_name = str_replace("." . $ext, "", $file_name);
+                    $file_name = str_slug($file_name, '-');
                     // $destination_file_name = str_slug($file_name, '_') . round(microtime(true) * 1000) . '.' . $ext;
-                    $destination_file_name = round(microtime(true) * 1000) . '.' . $ext;
+                    $destination_file_name = round(microtime(true) * 1000) . $file_name . '.' . $ext;
                     $destination_file_name = ltrim($destination_file_name, ',');
                     $file_object->move($destination_path, $destination_file_name);
                     $data[] = $destination_file_name;
@@ -281,13 +283,14 @@ class BarCodeController extends Controller
     }
 
     public function addBarCodeNormalByUserAjax(Request $request){
+        // dd($request);
         try{
             // Kiểm tra xem User có thể tạo Barcode được nữa ko
             $check = User::checkBarCodebyUser();
             if( $check ){
                 $user_id = Auth::user()->id;
                 $rules = [
-                    'barcode' =>'required|numeric|digits_between:12,13|unique:barcode,barcode|check_barcode:'.$request->barcode.'|regex:/(^(\d+)?$)/u',
+                    'barcode' =>'required|numeric|digits_between:12,13|check_barcode:'.$request->barcode.'|regex:/(^(\d+)?$)/u',
                     'name' =>'required|max:200',
                     'model' =>'required|max:50',
                     'manufacturer' => 'required|max:200',
@@ -297,7 +300,6 @@ class BarCodeController extends Controller
                     'barcode.required'=> isset($this->messages['barcode.required']) ? $this->messages['barcode.required'] : 'The product field is required.',
                     'barcode.numeric'=> isset($this->messages['barcode.numeric']) ? $this->messages['barcode.numeric'] : 'The product should be a number.',
                     'barcode.digits_between'=> isset($this->messages['barcode.digits_between']) ? $this->messages['barcode.digits_between'] : 'The product must be between 12 and 13 digits.',
-                    'barcode.unique'=> isset($this->messages['barcode.unique']) ? $this->messages['barcode.unique'] : 'The product has already been taken.',
                     'barcode.check_barcode'=> isset($this->messages['barcode.check_barcode']) ? $this->messages['barcode.check_barcode'] : 'The product has already been taken.',
 
                     'name.required'=> isset($this->messages['barcode.name.required']) ? $this->messages['barcode.name.required'] : 'The name field is required.',
@@ -390,6 +392,7 @@ class BarCodeController extends Controller
 
     public function getBarCode($id){
         $data = BarCode::getBarCodebyId($id);
+        // dd($data);
         return view('layouts_frontend.barcode.view',['data'=>$data]);
     }
 

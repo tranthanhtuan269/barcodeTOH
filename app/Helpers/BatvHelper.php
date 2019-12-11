@@ -7,12 +7,12 @@ use App\Barcode;
 class BatvHelper{
 
 public static function insertBarcode($barcode){
-//dd($barcode);
-// Create connection
-$HOST = "45.56.85.153";
-$USERNAME='tohapi_db';
-$PASSWORD='TOHapidb@123';
-$DBNAME='tohsystem';
+    //dd($barcode);
+    // Create connection
+    $HOST = "45.56.85.153";
+    $USERNAME='tohapi_db';
+    $PASSWORD='TOHapidb@123';
+    $DBNAME='tohsystem';
     $conn = mysqli_connect($HOST, $USERNAME, $PASSWORD, $DBNAME);
     $sql = "INSERT INTO barcode_dict VALUES('".$barcode->barcode."','".$barcode->name."','".$barcode->model."','".$barcode->manufacturer."','".$barcode->image."','".$barcode->avg_price."','".$barcode->spec."','".$barcode->feature."','".$barcode->description."',".time(true).")";
     $result = $conn->query($sql);
@@ -20,12 +20,12 @@ $DBNAME='tohsystem';
 }
 
 public static function insertBarcode2($barcode){
-//dd($barcode);
-// Create connection
-$HOST = "45.56.85.153";
-$USERNAME='tohapi_db';
-$PASSWORD='TOHapidb@123';
-$DBNAME='tohsystem';
+    //dd($barcode);
+    // Create connection
+    $HOST = "45.56.85.153";
+    $USERNAME='tohapi_db';
+    $PASSWORD='TOHapidb@123';
+    $DBNAME='tohsystem';
     $conn = mysqli_connect($HOST, $USERNAME, $PASSWORD, $DBNAME);
     $sql = "INSERT INTO barcode_dict VALUES('".$barcode['barcode']."','".$barcode['name']."','".$barcode['model']."','".$barcode['manufacturer']."','".$barcode['image']."','".$barcode['avg_price']."','".$barcode['spec']."','".$barcode['feature']."','".$barcode['description']."',".time(true).")";
     $result = $conn->query($sql);
