@@ -231,6 +231,7 @@
     var image;
 
     var prefsize;
+    var arr_str_image  = [];
 
     CKEDITOR.replace('description_field');
     CKEDITOR.replace('feature');
@@ -428,12 +429,15 @@
             success: function(file, response){
 
                 $(".ajax_waiting").removeClass("loading");
-                var arr_str_image  = [];
 
                 $.each( response.data, function(index, item){
-                    // if(jQuery.inArray(file.name, arr_str_image) === -1) {
-                        arr_str_image.push(file.name)
-                        $('#str_image').append('<div data-title="'+ file.name +'">'+ item +'</div>')
+                    console.log(file.name);
+                    console.log(slug(file.name));
+                    // if(jQuery.inArray(item, arr_str_image) === -1) {
+                    if(item.indexOf(slug(file.name)) != -1){
+                        arr_str_image.push(item)
+                        $('#str_image').append('<div data-title="'+ slug(file.name) +'">'+ item +'</div>')
+                    }
                     // }
                 });
                 
@@ -471,8 +475,16 @@
                             type: 'warning',
                             html: 'Please enter a valid file!',
                         })
-
                         return;
+                    }
+
+                    if (file.size > 2000000) {
+                        this.removeFile(file);
+                        return;
+                    }
+
+                    if(this.files.length > 10){
+                        this.removeFile(file);
                     }
 
                     // var ext = file.name.split('.').pop();
@@ -490,7 +502,9 @@
                                     type: 'warning',
                                     html: 'File already exists!',
                                 })   
-                                this.removeFile(file);
+                                // this.removeFile(file);
+                                // this.files.pop();
+                                file.previewElement.remove()
                             }
                         }
                     }
@@ -498,6 +512,10 @@
 
                 this.on('removedfile', function(file) {
                     file.previewElement.remove()
+                    // thisDropzone.removeFile(file);
+                    console.log('#str_image div[data-title="'+ file.name +'"]');
+                    console.log(this.files.length);
+                    arr_str_image.splice($.inArray(file.name, arr_str_image),1);
                     $('#str_image div[data-title="'+ file.name +'"]').remove()
                 });
 
@@ -505,18 +523,36 @@
         });
     });
 
+    var slug = function(str) {
+      str = str.replace(/^\s+|\s+$/g, ''); // trim
+      str = str.toLowerCase();
+
+      // remove accents, swap ñ for n, etc
+      var from = "ãàáảạăẵắằẳặâẫầấẩậäẽèéëẻẹêễềếểệĩìíïîịõòóöọỏôốộỗồổợỡớờỡởũùúủụưứừữựửüûñç_";
+      var to   = "aaaaaaaaaaaaaaaaaaeeeeeeeeeeeeiiiiiioooooooooooooooooouuuuuuuuuuuuunc-";
+      for (var i=0, l=from.length ; i<l ; i++) {
+        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+      }
+
+      str = str.replace(/[^a-z0-9. -]/g, '') // remove invalid chars
+        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+        .replace(/-+/g, '-'); // collapse dashes
+
+      return str;
+    };
+
 
     $("body").on("click", "#add-edit-barcode", function (e) {
         var str_image = '';
-        var arr_str_image  = [];
+        // console.log(arr_str_image);return false;
 
         $('#str_image div').each(function(i, obj) {
             var item  = $(obj).html();
 
-            if(jQuery.inArray(item, arr_str_image) === -1) {
+            // if(jQuery.inArray(item, arr_str_image) === -1) {
                 arr_str_image.push(item)
                 str_image += item.trim() + ',';
-            }
+            // }
 
         });
         
